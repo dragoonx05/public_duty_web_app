@@ -1,8 +1,8 @@
 class CreatePosts < ActiveRecord::Migration[5.2]
   def change
-    create_table :posts do |t|
+    create_table :duties do |t|
       t.timestamps
-      t.belongs_to :user, name: 'created_by', index: true
+      t.belongs_to :user, name: 'created_by', foreign_key: true
       t.string :duty_name, null: false
       t.string :venue, null: false
       t.datetime :start_date_time, null: false

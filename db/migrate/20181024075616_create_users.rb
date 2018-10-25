@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :division, null: false
       t.string :phone_number
       t.boolean :driver_status, default: false
-      t.string :role
+      t.string :role # Member, CVSC, PDC, Administrator
     end
   end
 end
