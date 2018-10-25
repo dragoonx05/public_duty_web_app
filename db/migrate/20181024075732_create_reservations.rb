@@ -1,8 +1,9 @@
 class CreateReservations < ActiveRecord::Migration[5.2]
   def change
     create_table :reservations do |t|
-      t.belongs_to :user, index: true
       t.timestamps
+      t.belongs_to :user, name: 'member_id' , foreign_key: true
+      t.belongs_to :post, name: "duty_id" foreign_key: true
     end
   end
 end
