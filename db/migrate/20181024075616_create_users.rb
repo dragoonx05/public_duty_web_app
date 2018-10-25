@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :sjam_id, null: false
       t.string :division, null: false
       t.string :phone_number
+      t.boolean :driver_status, default: false
       t.string :role
     end
   end
