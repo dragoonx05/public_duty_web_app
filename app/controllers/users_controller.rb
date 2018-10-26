@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
     def create 
         user = User.new(signup_params)
-        # user.set_driver_status
 
         if user.save
             flash[:notice] = "Account successfully registered!"
