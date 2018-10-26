@@ -1,0 +1,43 @@
+<div class="text-field">
+  <%= signup_form.label :email %>
+  <%= signup_form.text_field :email, type: 'email' %>
+</div>
+
+<div class="text-field">
+  <%= signup_form.label :name %>
+  <%= signup_form.text_field :name %>
+</div>
+
+<div class="password-field">
+  <%= signup_form.label :password %>
+  <%= signup_form.password_field :password %>
+</div>
+
+<div class="text-field">
+  <%= signup_form.label :identity_card_number %>
+  <%= signup_form.text_field :ic_number %>
+</div>
+
+<div class="text-field">
+  <%= signup_form.label :sjam_id %>
+  <%= signup_form.text_field :sjam_id %>
+</div>
+
+<div class="text-field">
+  <%= signup_form.label :division %>
+  <%= signup_form.text_field :division %>
+</div>
+
+<div class="text-field">
+  <%= signup_form.label :phone_number %>
+  <%= signup_form.text_field :phone_number %>
+</div>
+
+<div class="text-field">
+  <%= signup_form.label :driver_status %>
+  <%= signup_form.check_box :driver_status%>
+</div>
+
+<div class="submit-field">
+    <%= signup_form.submit %>
+</div>
