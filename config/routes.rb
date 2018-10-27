@@ -6,5 +6,8 @@ Rails.application.routes.draw do
   resources :users, only:[:create, :edit, :show, :update]
 
   get "/sign_up" => "users#new", as: "sign_up"
-  get "/sign_in" => "sessions#new", as: "sign_in"
+
+  get "/login" => "sessions#new", as: "login"
+  post "/login" => "sessions#create"
+  get "/logout" => "sessions#destroy" as: "logout"
 end

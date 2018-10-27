@@ -8,6 +8,7 @@ class UsersController < ApplicationController
         user = User.new(signup_params)
 
         if user.save
+            session[:user_id] = user.id
             flash[:notice] = "Account successfully registered!"
             redirect_to "/"
         else

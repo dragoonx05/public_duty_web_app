@@ -3,23 +3,23 @@
   <%= signup_form.text_field :email, type: 'email' %>
 </div>
 
-<div class="text-field">
-  <%= signup_form.label :name %>
-  <%= signup_form.text_field :name %>
-</div>
-
 <div class="password-field">
   <%= signup_form.label :password %>
   <%= signup_form.password_field :password %>
 </div>
 
 <div class="text-field">
-  <%= signup_form.label :identity_card_number %>
+  <%= signup_form.label :name %>
+  <%= signup_form.text_field :name %>
+</div>
+
+<div class="text-field">
+  <%= signup_form.label :ic_number, "IC Number" %>
   <%= signup_form.text_field :ic_number %>
 </div>
 
 <div class="text-field">
-  <%= signup_form.label :sjam_id %>
+  <%= signup_form.label :sjam_id, "SJAM ID" %>
   <%= signup_form.text_field :sjam_id %>
 </div>
 
