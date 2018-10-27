@@ -4,6 +4,8 @@ class User < ApplicationRecord
     has_many :authentications, dependent: :destroy
     has_secure_password
 
+    # before_validate :default_role
+
     validates :email, :password, :email, :ic_number, :division, :phone_number, presence: true
     validates :email, uniqueness: true, format: { with: /(\w{1,})@(\w{1,})\.\w{2,}(\.\w{2,})?/, message: "invalid email format" }
     validates :ic_number, uniqueness: true#, format: { with: }

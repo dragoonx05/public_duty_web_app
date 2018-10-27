@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
     def create 
         user = User.new(signup_params)
-
+        user.role = "Member" # default role is member, only admin is appointed and pdc and cvsc is appointed by admin
         if user.save
             session[:user_id] = user.id
             flash[:notice] = "Account successfully registered!"
@@ -17,6 +17,10 @@ class UsersController < ApplicationController
         end 
     end
     
+    # def default_role
+    #     user_role = User.
+    # end
+
     private
     
     def signup_params
