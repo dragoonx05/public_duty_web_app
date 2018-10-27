@@ -3,11 +3,17 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
+  # user related routes
   resources :users, only:[:create, :edit, :show, :update]
 
   get "/sign_up" => "users#new", as: "sign_up"
 
   get "/login" => "sessions#new", as: "login"
-  post "/login" => "sessions#create"
-  get "/logout" => "sessions#destroy" as: "logout"
+  get "/logout" => "sessions#destroy", as: "logout"
+
+  # post and reservation related routes
+  resources :duties do
+    resources :reservations
+  end
+  
 end
