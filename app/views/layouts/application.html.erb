@@ -62,15 +62,21 @@
         <% end %>
 				
 			</ul>
-      <div class="mr-1">
+      <div class="mr-2">
         <% if current_user %>
           Hi <%= link_to current_user.name, user_path(current_user.id) %>!
         <% end %>
       </div>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
+        <%= form_tag( scope: :search, method: :get, role: 'form') do %>
+            <div class="form-inline my-2 my-lg-0">
+                <%= text_field_tag :term, nil, placeholder: 'Search', class: 'form-control mr-sm-2' %> 
+                <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
+            </div>
+        <% end %>
+        <!--<form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>-->
 		</div>
 	</nav>
 

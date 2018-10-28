@@ -21,7 +21,10 @@ class DutiesController < ApplicationController
     end
 
     def index
-        @duties = Duty.all
+        @duties = Duty.where(nil)
+
+        @duties = @duties.duty_name(params[:search][:duty_name]) if params[:search] && params[:search][:duty_name].present?
+        @duties = @duties.duty_name(params[:search][:venue]) if params[:search] && params[:search][:venue].present?
     end
 
     def show
