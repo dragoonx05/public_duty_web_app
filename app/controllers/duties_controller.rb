@@ -38,7 +38,10 @@ class DutiesController < ApplicationController
         redirect_to duties_path(duty)
     end
 
-    def delete
+    def destroy
+        duty = Duty.find(params[:id])
+        duty.destroy
+        redirect_to duties_path
     end
 
     private
