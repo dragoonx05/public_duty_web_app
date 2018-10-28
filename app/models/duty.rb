@@ -7,4 +7,5 @@ class Duty < ApplicationRecord
     scope :duty_name, -> (duty_name) { where duty_name: duty_name }
     scope :venue, -> (venue) { where venue: venue }
 
+    searchkick
 end

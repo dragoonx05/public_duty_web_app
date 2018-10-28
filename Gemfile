@@ -61,6 +61,9 @@ gem 'sidekiq'
 # use PG Search 
 gem 'pg_search'
 
+# searchkick search 
+gem 'searchkick'
+
 # SMS notification
 gem 'twilio-ruby'
 
