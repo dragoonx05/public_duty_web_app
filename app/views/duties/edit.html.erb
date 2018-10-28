@@ -1,7 +1,7 @@
 <div class="container">
-    <h1>New Duty</h1>
-
+    <h1>Edit Duty Details</h1>
+    
     <%= form_with model: @duty, scope: :duty do |form| %>
-        <%= render partial: '/duties/new_duty', object: form %>
+        <%= render partial: '/duties/edit_duty', object: form %>
     <% end %>
 </div>
