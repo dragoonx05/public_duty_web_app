@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy", as: "logout"
 
+  # google oauth
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
   # post and reservation related routes
   resources :duties do
     resources :reservations
