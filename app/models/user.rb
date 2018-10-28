@@ -6,17 +6,23 @@ class User < ApplicationRecord
 
     # before_validate :default_role
 
-    validates :email, :password, :email, :ic_number, :division, :phone_number, presence: true
+    # validates :email, :password, :name, :ic_number, :division, :phone_number, presence: true
+    validates :email, :password, :name, presence: true
     validates :email, uniqueness: true, format: { with: /(\w{1,})@(\w{1,})\.\w{2,}(\.\w{2,})?/, message: "invalid email format" }
     validates :ic_number, uniqueness: true#, format: { with: }
     validates :sjam_id, uniqueness: true#, format: { with: }
     # validates :phone_number, format: { with: }
 
+    #----- google oauth -----# (not in use)
     def self.create_with_auth_and_hash(authentication, auth_hash)
         user = self.create!(
             name: auth_hash["info"]["name"],
             email: auth_hash["info"]["email"],
-            password: SecureRandom.hex(10)
+            password: SecureRandom.hex(10),
+            ic_number: "213688799645",
+            sjam_id: "5975645",
+            division: "pca",
+            phone_number: "01885421312"
         )
         user.authentications << authentication
         return user

@@ -16,4 +16,15 @@ class ApplicationController < ActionController::Base
         redirect_to "/login" unless current_user
     end
 
+    # a convenient method to set the session to given user's id with the `:user_id` key
+    def sign_in(user)
+        session[:user_id] = user.id
+    end
+
+    # clears the session by setting the value of `:user_id` key to `nil`
+    def sign_out
+        session[:user_id] = nil
+    end
 end
+
+
