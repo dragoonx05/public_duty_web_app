@@ -19,10 +19,14 @@ class UsersController < ApplicationController
 
     def update
         user = User.find(params[:id])
+        user.updating_password = false
         user.update(update_params)
-
+        if !user.save
+            user.errors.full_messages
+        end
         byebug
         redirect_to user_path(user)
+
     end
     
     # def default_role

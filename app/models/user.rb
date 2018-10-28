@@ -7,11 +7,17 @@ class User < ApplicationRecord
     # before_validate :default_role
 
     # validates :email, :password, :name, :ic_number, :division, :phone_number, presence: true
-    validates :email, :password, :name, presence: true
+    validates :email, :name, presence: true
+    validates :password, presence: true, :if => :should_validate_password?
     validates :email, uniqueness: true, format: { with: /(\w{1,})@(\w{1,})\.\w{2,}(\.\w{2,})?/, message: "invalid email format" }
     validates :ic_number, uniqueness: true#, format: { with: }
     validates :sjam_id, uniqueness: true#, format: { with: }
     # validates :phone_number, format: { with: }
+    attr_accessor :updating_password
+
+    def should_validate_password?
+        updating_password || new_record?
+    end
 
     #----- google oauth -----# (not in use)
     def self.create_with_auth_and_hash(authentication, auth_hash)
