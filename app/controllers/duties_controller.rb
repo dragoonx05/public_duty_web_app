@@ -7,18 +7,35 @@ class DutiesController < ApplicationController
     end
 
     def create
-        duty = Duty.new(new_duty_params)
+        duty = Duty.new(duty_params)
         duty.user_id = current_user.id
         if duty.save
             flash[:notice] = "Duty successfully registered!"
             redirect_to duties_path
+            # --- activate only when it is ready ---
+            # redirect_to duty_path(duty)
         else
             flash[:alert] = "Unable to register duty, check details and retry!"
             render :new
         end 
     end
 
+    def index
+        @duties = Duty.all
+    end
+
+    def show
+        @duty = Duty.find(params[:id])
+    end
+
     def edit
+        @duty = Duty.find(params[:id])
+    end
+
+    def update
+        duty = Duty.find(params[:id])
+        duty.update(duty_params)
+        redirect_to duties_path(duty)
     end
 
     def delete
@@ -26,7 +43,7 @@ class DutiesController < ApplicationController
 
     private
     
-    def new_duty_params
+    def duty_params
         params.require(:duty).permit(:duty_name, :venue, :start_date_time, :end_date_time, :contact_person, :contact_number)
     end
 
