@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, only:[:create, :edit, :show, :update]
 
   get "/sign_up" => "users#new", as: "sign_up"
+  post "/sign_up" => "users#create"
 
   get "/login" => "sessions#new", as: "login"
   post "/login" => "sessions#create"
