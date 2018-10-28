@@ -64,7 +64,7 @@
 			</ul>
       <div class="mr-1">
         <% if current_user %>
-          Hi <%= current_user.name %>!
+          Hi <%= link_to current_user.name, user_path(current_user.id) %>!
         <% end %>
       </div>
 			<form class="form-inline my-2 my-lg-0">

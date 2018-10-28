@@ -1,5 +1,37 @@
-<h1>User page</h1>
+<div class="container">
+    <h1>User page</h1>
 
-<div>
-    Hello, <%= @current_user.name %>
+    <%= link_to "Edit Details", edit_user_path(current_user.id) %>
+    <div>
+        Hello, <%= current_user.name %>
+    </div> 
+
+    <div>
+        <%= current_user.name %>
+    </div>
+
+    <div>
+        <%= current_user.email %>
+    </div>
+
+    <div>
+        <%= current_user.ic_number %>
+    </div>
+
+    <div>
+        <%= current_user.sjam_id %>
+    </div>
+
+    <div>
+        <%= current_user.division %>
+    </div>
+
+    <div>
+        <%= current_user.phone_number %>
+    </div>
+
+    <div>
+        <%= current_user.driver_status %>
+    </div>
+
 </div>

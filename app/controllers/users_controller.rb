@@ -16,6 +16,14 @@ class UsersController < ApplicationController
             render :new
         end 
     end
+
+    def update
+        user = User.find(params[:id])
+        user.update(update_params)
+
+        byebug
+        redirect_to user_path(user)
+    end
     
     # def default_role
     #     user_role = User.
@@ -25,6 +33,10 @@ class UsersController < ApplicationController
     
     def signup_params
         params.require(:users).permit(:email, :name, :password, :ic_number, :sjam_id, :division, :phone_number, :driver_status)
+    end
+
+    def update_params
+        params.require(:update_users).permit(:email, :name, :ic_number, :sjam_id, :division, :phone_number)
     end
 
 

@@ -35,6 +35,7 @@ class DutiesController < ApplicationController
     def update
         duty = Duty.find(params[:id])
         duty.update(duty_params)
+        byebug
         redirect_to duties_path(duty)
     end
 

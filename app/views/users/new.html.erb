@@ -1,7 +1,7 @@
 <div id="" class="container">
     <h1>User Sign up Page</h1>
 
-    <%= form_with model: @user, scope: :users do |form| %>
+    <%= form_with scope: :users do |form| %>
         <%= render partial: '/users/signup_form', object: form %>
     <% end %>
 
