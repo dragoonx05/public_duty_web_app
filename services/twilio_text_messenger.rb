@@ -10,9 +10,9 @@ class TwilioTextMessenger
 
         @client.messages.create){
             from: ENV['twilio_phone_number'],
-            to: '+your number',
-            body: 'You have made a duty booking'
+            to: ENV['my_number'],
+            body: 'You have made a duty booking!'
         })
     end
-    
+
 end
