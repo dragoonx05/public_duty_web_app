@@ -11,7 +11,7 @@
                 <h6 class="card-subtitle mb-2 text-muted"><%= duty.start_date_time %></h6>
                 <h6 class="card-subtitle mb-2 text-muted"><%= duty.end_date_time %></h6>
                 <p class="card-text">type something</p>
-                <a href="#" class="card-link">Request Duty</a>
+                <a href="/duties/<%= duty.id %>" class="card-link">Request Duty</a>
             </div>
         </div>
     <% end %>
