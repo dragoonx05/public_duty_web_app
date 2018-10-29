@@ -53,6 +53,15 @@ class DutiesController < ApplicationController
         redirect_to duties_path
     end
 
+    def ajax_search
+        @duties = Duty.all
+        @duties = Duty.search_fields(params[:search_fields]).pluck(:duty_name).uniq
+        respond_to do |format| #collect data and save as string
+            format.json {render json: @duties}
+            format.json
+        end
+    end
+
     private
     
     def duty_params

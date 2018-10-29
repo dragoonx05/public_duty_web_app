@@ -18,9 +18,14 @@ Rails.application.routes.draw do
   # google oauth
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
+
+  # duty ajax search
+  get "duties/ajax_search" => "duties#ajax_search", as: "ajax_search"
+
   # post and reservation related routes
   resources :duties do
     resources :reservations
   end
+
 
 end
