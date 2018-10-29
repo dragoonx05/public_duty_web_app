@@ -13,13 +13,13 @@
                 <p class="card-text">type something</p>
                 <div>
                     <%= form_with model: @reservation, scope: :reservations, url: duty_reservations_path(duty.id) do |form| %>
-                        <%= form.hidden_field :user_id, value: current_user.id %>
-                        <%#= form.hidden_field :duty_id, value: @duty.id %>
-                        <%# if reserved? %>
-                            <%#= form.submit "Request Duty", disabled: true %>
-                        <%# else %>
+                    <%# if the user has reserved for this duty, then button is disabled%>
+                    <%# so need to read from Reservation, check for user_id for current_user.id for this particular duty.id %>
+                        <% if reserved? == true %>
+                            <%= form.submit "Request Duty", disabled: true %>
+                        <% else %>
                             <%= form.submit "Request Duty" %>
-                        <%# end %>
+                        <% end %>
                     <% end %>
                 </div>
             </div>

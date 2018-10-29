@@ -3,16 +3,21 @@ class ApplicationController < ActionController::Base
     # For APIs, you may want to use :null_session instead.
     protect_from_forgery with: :exception
 
+    helper_method :current_user, :reserved?
     def current_user
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
-    helper_method :current_user
 
-    # def reserved?
-    #     @duty = params[:id]
-    #     @reserved = Reservation.where(user_id: current_user.id, duty_id: params[:id]) if @duty
-    # end
-    # helper_method :reserved?
+    def reserved?
+        # duty = Duty.find(params[:id])
+        reserved_duty = Reservation.where(duty_id: params[:id], user_id: current_user.id)
+        if reserved_duty
+            return true
+        else
+            return false
+        end
+    end
+
     
     def signed_in?
         !current_user.nil?
