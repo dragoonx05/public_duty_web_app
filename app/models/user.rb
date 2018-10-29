@@ -26,10 +26,10 @@ class User < ApplicationRecord
             name: auth_hash["info"]["name"],
             email: auth_hash["info"]["email"],
             password: SecureRandom.hex(10),
-            ic_number: "213688799645",
-            sjam_id: "5975645",
-            division: "pca",
-            phone_number: "01885421312"
+            ic_number: "920103140001",
+            sjam_id: "WP-0069",
+            division: "Kuala Lumpur Pudu Combined Adult",
+            phone_number: "0122331312"
         )
         user.authentications << authentication
         return user

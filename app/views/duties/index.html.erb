@@ -1,8 +1,10 @@
 <div class="container">
     <h1>Duty List</h1>
     
-    <%= link_to "New Duty", new_duty_path %>
-    
+    <% if admin?(current_user.role) %>
+        <%= link_to "New Duty", new_duty_path %>
+    <% end %>
+
     <% @searched_results.each do |duty| %>
         <div class="card mb-2" style="width: 18rem;">
             <div class="card-body">
