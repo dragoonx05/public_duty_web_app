@@ -1,5 +1,5 @@
 class Duty < ApplicationRecord
-    belongs_to :user
+    belongs_to :user, foreign_key: :created_by 
     has_many :reservations
 
     validates :duty_name, :venue, :start_date_time, presence: true

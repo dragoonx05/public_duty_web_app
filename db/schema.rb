@@ -34,17 +34,16 @@ ActiveRecord::Schema.define(version: 2018_10_28_015847) do
     t.datetime "start_date_time", null: false
     t.datetime "end_date_time", null: false
     t.string "contact_person", default: "-"
-    t.string "contact_number"
+    t.string "contact_number", default: "-"
     t.index ["user_id"], name: "index_duties_on_user_id"
   end
 
   create_table "reservations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.integer "member_id"
     t.bigint "duty_id"
     t.index ["duty_id"], name: "index_reservations_on_duty_id"
-    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,16 +52,15 @@ ActiveRecord::Schema.define(version: 2018_10_28_015847) do
     t.string "email", null: false
     t.string "password_digest", limit: 128, null: false
     t.string "name", null: false
-    t.string "ic_number", null: false
-    t.string "sjam_id", null: false
-    t.string "division", null: false
+    t.string "ic_number"
+    t.string "sjam_id"
+    t.string "division"
     t.string "phone_number"
     t.boolean "driver_status", default: false
-    t.string "role"
+    t.string "role", default: "Member"
   end
 
   add_foreign_key "authentications", "users"
   add_foreign_key "duties", "users"
   add_foreign_key "reservations", "duties"
-  add_foreign_key "reservations", "users"
 end
