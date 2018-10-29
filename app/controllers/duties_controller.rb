@@ -19,7 +19,7 @@ class DutiesController < ApplicationController
 
     def create
         duty = Duty.new(duty_params)
-        duty.user_id = current_user.id
+        duty.created_by = current_user.id
         if duty.save
             flash[:notice] = "Duty successfully registered!"
             redirect_to duties_path

@@ -28,14 +28,14 @@ ActiveRecord::Schema.define(version: 2018_10_28_015847) do
   create_table "duties", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.integer "created_by"
     t.string "duty_name", null: false
     t.string "venue", null: false
     t.datetime "start_date_time", null: false
     t.datetime "end_date_time", null: false
     t.string "contact_person", default: "-"
     t.string "contact_number", default: "-"
-    t.index ["user_id"], name: "index_duties_on_user_id"
+    t.index ["created_by"], name: "index_duties_on_created_by"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -61,6 +61,5 @@ ActiveRecord::Schema.define(version: 2018_10_28_015847) do
   end
 
   add_foreign_key "authentications", "users"
-  add_foreign_key "duties", "users"
   add_foreign_key "reservations", "duties"
 end

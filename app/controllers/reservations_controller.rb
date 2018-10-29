@@ -19,7 +19,6 @@ class ReservationsController < ApplicationController
         @reserve.user_id = current_user.id
         @reserve.duty_id = @duty.id
         if @reserve.save == false
-            byebug
             redirect_to root_path
             flash[:error] = "Sorry, something went wrong."
         else
