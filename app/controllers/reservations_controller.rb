@@ -22,11 +22,11 @@ class ReservationsController < ApplicationController
             redirect_to root_path
             flash[:error] = "Sorry, something went wrong."
         else
-            # Twilio::REST::Client.new.messages.create({
-            #     from: ENV['twilio_phone_number'],
-            #     to: ENV['my_number'],
-            #     body: "You have booked the duty '#{@duty.duty_name}' and be ready 1 hour before #{@duty.start_date_time}. Thank you for volunteering!"
-            # })
+            Twilio::REST::Client.new.messages.create({
+                from: ENV['twilio_phone_number'],
+                to: ENV['my_number'],
+                body: "You have booked the duty '#{@duty.duty_name}' and be ready 1 hour before #{@duty.start_date_time}. Thank you for volunteering!"
+            })
             redirect_to user_path(current_user)
         end
     end
