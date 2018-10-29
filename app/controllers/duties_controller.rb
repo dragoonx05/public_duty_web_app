@@ -3,12 +3,15 @@ class DutiesController < ApplicationController
     before_action :authorize
     
     def index
-        @duties = Duty.all
-        # @duties = Duty.where(nil)
+        # @duties = Duty.all
+        @duties = Duty.where(nil)
+        @searched_results = @duties.filter(filtering_params(params))
     
         # @duties = @duties.duty_name(params[:search][:duty_name]) if params[:search] && params[:search][:duty_name].present?
         # @duties = @duties.duty_name(params[:search][:venue]) if params[:search] && params[:search][:venue].present?
+
     end
+    
     
     def new
         @duty = Duty.new
@@ -54,6 +57,10 @@ class DutiesController < ApplicationController
     
     def duty_params
         params.require(:duty).permit(:duty_name, :venue, :start_date_time, :end_date_time, :contact_person, :contact_number)
+    end
+
+    def filtering_params(params)
+        params.slice(:search_fields)
     end
 
 end

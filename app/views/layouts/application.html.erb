@@ -67,20 +67,43 @@
           Hi <%= link_to current_user.name, user_path(current_user.id) %>!
         <% end %>
       </div>
-        <%= form_tag( scope: :search, method: :get, role: 'form') do %>
+        <%= form_with method: :get, id: "duties-search", url: duties_path, local: true, remote: true do %>
             <div class="form-inline my-2 my-lg-0">
-                <%= text_field_tag :term, nil, placeholder: 'Search', class: 'form-control mr-sm-2' %> 
+                <%= text_field_tag :search_fields, nil, placeholder: 'Search', class: 'form-control mr-sm-2' %> 
                 <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
             </div>
         <% end %>
-        <!--<form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>-->
 		</div>
 	</nav>
 
     <%= yield %>
+<script>
+    $("#duties-search").on("keyup", function(){
+  autocomplete()
+});
 
+function autocomplete(){
+  $.ajax({
+    url: '/search',
+    type: 'POST',
+    data: $("#duties-search").serialize(), //takes the form data and authenticity toke and converts it into a standard URL
+    dataType: 'json', //specify what type of data you're expecting back from the servers
+    error: function() {
+        console.log("Something went wrong");
+    },
+    success: function(data) {
+      $("#list").html("");
+
+      data.forEach(function(element) {
+        var option = document.createElement("option");
+        option.value = element;
+
+        //append option to list
+        $("#list").append(option);
+      });
+    }
+  });
+}
+</script>
   </body>
 </html>

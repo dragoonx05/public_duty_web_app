@@ -3,7 +3,7 @@
     
     <%= link_to "New Duty", new_duty_path %>
     
-    <% @duties.each do |duty| %>
+    <% @searched_results.each do |duty| %>
         <div class="card mb-2" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title"><%= link_to duty.duty_name, duty_path(duty.id) %> </h5>
