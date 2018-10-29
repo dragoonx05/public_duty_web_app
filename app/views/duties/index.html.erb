@@ -15,7 +15,7 @@
                     <%= form_with model: @reservation, scope: :reservations, url: duty_reservations_path(duty.id) do |form| %>
                     <%# if the user has reserved for this duty, then button is disabled%>
                     <%# so need to read from Reservation, check for user_id for current_user.id for this particular duty.id %>
-                        <% if reserved? == true %>
+                        <% if reserved?(duty.id) %>
                             <%= form.submit "Request Duty", disabled: true %>
                         <% else %>
                             <%= form.submit "Request Duty" %>

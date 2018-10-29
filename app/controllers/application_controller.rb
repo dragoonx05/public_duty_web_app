@@ -8,14 +8,10 @@ class ApplicationController < ActionController::Base
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
-    def reserved?
+    def reserved?(id)
         # duty = Duty.find(params[:id])
-        reserved_duty = Reservation.where(duty_id: params[:id], user_id: current_user.id)
-        if reserved_duty
-            return true
-        else
-            return false
-        end
+        # @reserved_duty ||= Reservation.where(duty_id: params[:id], user_id: session[:user_id]) if session[:user_id]
+        current_user.reservations.find_by(duty_id: id)
     end
 
     
