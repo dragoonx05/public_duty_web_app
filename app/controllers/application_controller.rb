@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
     end
     helper_method :current_user
 
-    def reserved?
-        @duty = params[:id]
-        @reserved = Reservation.where(user_id: current_user.id, duty_id: params[:id]) if @duty
-    end
-    helper_method :reserved?
+    # def reserved?
+    #     @duty = params[:id]
+    #     @reserved = Reservation.where(user_id: current_user.id, duty_id: params[:id]) if @duty
+    # end
+    # helper_method :reserved?
     
     def signed_in?
         !current_user.nil?
