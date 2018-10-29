@@ -96,6 +96,7 @@ group :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'guard'
+  gem 'guard-puma'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
