@@ -67,9 +67,9 @@
           Hi <%= link_to current_user.name, user_path(current_user.id) %>!
         <% end %>
       </div>
-        <%= form_with method: :get, id: "duties-search", url: duties_path, local: true, remote: true do %>
+        <%= form_with method: :get,  url: duties_path, local: true, remote: true, id: "duties-form" do %>
             <div class="form-inline my-2 my-lg-0">
-                <%= text_field_tag :search_fields, nil, placeholder: 'Search', class: 'form-control mr-sm-2' %> 
+                <%= text_field_tag :search_fields, nil, placeholder: 'Search', id: "duties-search", class: 'form-control mr-sm-2', list: "list" %> 
                 <datalist id="list"></datalist>
                 <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
             </div>
@@ -89,7 +89,8 @@
         $.ajax({
             url: '/duties/ajax_search',
             method: 'GET',
-            data: {query: $("#search-fields").val()},
+            data: $("#duties-form").serialize(),
+            
             // $("#duties-search").serialize(), //takes the form data and authenticity toke and converts it into a standard URL
             dataType: 'json', //specify what type of data you're expecting back from the servers
             error: function() {
@@ -101,6 +102,7 @@
 
             data.forEach(function(element) {
                 let option = document.createElement("option");
+                console.log(option)
                 option.value = element;
 
                 //append option to list
