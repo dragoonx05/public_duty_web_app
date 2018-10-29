@@ -2,7 +2,7 @@
     <h1>My duties</h1>
 
     <% @reservations.each do |reservation| %>
-        <div class="card" style="width: 18rem;">
+        <div class="card mb-2" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title"><%= link_to reservation.duty.duty_name, duty_path(reservation.duty.id) %> </h5>
                 <h6 class="card-subtitle mb-2 text-muted"><%= reservation.duty.venue %></h6>

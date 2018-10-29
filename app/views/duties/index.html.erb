@@ -4,7 +4,7 @@
     <%= link_to "New Duty", new_duty_path %>
     
     <% @duties.each do |duty| %>
-        <div class="card" style="width: 18rem;">
+        <div class="card mb-2" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title"><%= link_to duty.duty_name, duty_path(duty.id) %> </h5>
                 <h6 class="card-subtitle mb-2 text-muted"><%= duty.venue %></h6>
@@ -12,9 +12,9 @@
                 <h6 class="card-subtitle mb-2 text-muted"><%= duty.end_date_time %></h6>
                 <p class="card-text">type something</p>
                 <div>
-                    <%= form_with scope: :reservations, url: duty_reservations_path(duty.id) do |form| %>
-                        <% form.hidden_field :user_id, value: current_user.id %>
-                        <%# form.hidden_field :duty_id, value: @duty.id %>
+                    <%= form_with model: @reservation, scope: :reservations, url: duty_reservations_path(duty.id) do |form| %>
+                        <%= form.hidden_field :user_id, value: current_user.id %>
+                        <%#= form.hidden_field :duty_id, value: @duty.id %>
                         <%= form.submit "Request Duty" %>
                     <% end %>
                 </div>
