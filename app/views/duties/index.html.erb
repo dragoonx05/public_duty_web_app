@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>Duty List</h1>
+    
+    <%= link_to "New Duty", new_duty_path %>
+    
+    <% @searched_results.each do |duty| %>
+        <div class="card mb-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><%= link_to duty.duty_name, duty_path(duty.id) %> </h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= duty.venue %></h6>
+                <h6 class="card-subtitle mb-2 text-muted"><%= duty.start_date_time %></h6>
+                <h6 class="card-subtitle mb-2 text-muted"><%= duty.end_date_time %></h6>
+                <p class="card-text">type something</p>
+                <div>
+                    <%= form_with model: @reservation, scope: :reservations, url: duty_reservations_path(duty.id) do |form| %>
+                    <%# if the user has reserved for this duty, then button is disabled%>
+                    <%# so need to read from Reservation, check for user_id for current_user.id for this particular duty.id %>
+                        <% if reserved?(duty.id) %>
+                            <%= form.submit "Request Duty", disabled: true %>
+                        <% else %>
+                            <%= form.submit "Request Duty" %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
+</div>

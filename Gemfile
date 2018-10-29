@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# bcrypt for password
+gem "bcrypt"
+
 # Figaro
 gem "figaro"
 
@@ -58,6 +61,12 @@ gem 'sidekiq'
 # use PG Search 
 gem 'pg_search'
 
+# searchkick search 
+gem 'searchkick'
+
+# SMS notification
+gem 'twilio-ruby'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -81,7 +90,15 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+
+  gem "rspec-given"
+  gem 'shoulda-matchers'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'guard'
+  gem 'guard-puma'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+

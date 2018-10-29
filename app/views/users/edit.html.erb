@@ -1,0 +1,7 @@
+<div class="container">
+    <h1>Edit Member Details</h1>
+    
+    <%= form_with model: current_user, scope: :update_users do |form| %>
+        <%= render partial: '/users/edit_user', object: form %>
+    <% end %>
+</div>

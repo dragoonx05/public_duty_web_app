@@ -5,11 +5,113 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <!-- Bootstrap CDN -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  <!-- Google Fonts -->
+
+  <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500%7CRoboto" rel="stylesheet">
+
+  <!-- FontAwesome CDN For Icons -->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Rails JS & CSS Tags -->
+
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application'%>
   </head>
 
   <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/">Public Duty App</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+				</li>
+        <% if current_user %>
+          <li class="nav-item">
+            <a class="nav-link" href="/duties">Duties</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sign_up">Sign Up</a>
+          </li>
+        <% end %>
+				
+			</ul>
+      <div class="mr-2">
+        <% if current_user %>
+          Hi <%= link_to current_user.name, user_path(current_user.id) %>!
+        <% end %>
+      </div>
+        <%= form_with method: :get,  url: duties_path, local: true, remote: true, id: "duties-form" do %>
+            <div class="form-inline my-2 my-lg-0">
+                <%= text_field_tag :search_fields, nil, placeholder: 'Search', id: "duties-search", class: 'form-control mr-sm-2', list: "list" %> 
+                <datalist id="list"></datalist>
+                <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
+            </div>
+        <% end %>
+		</div>
+	</nav>
+
     <%= yield %>
+<script>
+
+    $(document).on('turbolinks:load', function(){
+        $("#duties-search").keyup(function(){
+            autocomplete()
+        });
+
+    function autocomplete(){
+        $.ajax({
+            url: '/duties/ajax_search',
+            method: 'GET',
+            data: $("#duties-form").serialize(),
+            
+            // $("#duties-search").serialize(), //takes the form data and authenticity toke and converts it into a standard URL
+            dataType: 'json', //specify what type of data you're expecting back from the servers
+            error: function() {
+                console.log("Something went wrong");
+            },
+            success: function(data) {
+                document.querySelector('#list').innerHTML = ""
+                // $("#list").html("");
+
+            data.forEach(function(element) {
+                let option = document.createElement("option");
+                console.log(option)
+                option.value = element;
+
+                //append option to list
+                $("#list").append(option);
+                });
+            }
+        });
+    }
+    });
+</script>
   </body>
 </html>
