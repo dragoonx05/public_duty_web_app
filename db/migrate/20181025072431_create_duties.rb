@@ -8,7 +8,7 @@ class CreateDuties < ActiveRecord::Migration[5.2]
       t.datetime :start_date_time, null: false
       t.datetime :end_date_time, null: false
       t.string :contact_person, default: "-"
-      t.string :contact_number, defualt: "-"
+      t.string :contact_number, default: "-"
     end
   end
 end
