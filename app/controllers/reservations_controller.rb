@@ -32,6 +32,10 @@ class ReservationsController < ApplicationController
         end
     end
 
+    def ajax_button
+        
+    end
+
     def delete
     end
 
