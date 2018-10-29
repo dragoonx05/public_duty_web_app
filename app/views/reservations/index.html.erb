@@ -1,18 +1,15 @@
 <div class="container">
-    <h1>My Duties</h1>
+    <h1>My duties</h1>
 
     <% @reservations.each do |reservation| %>
-        <div>
-            <%= reservation.duty.duty_name %>
-        </div>
-        <div>
-            <%= reservation.duty.venue %>
-        </div>
-        <div>
-            <%= reservation.duty.start_date_time %>
-        </div>
-        <div>
-            <%= reservation.duty.end_date_time %>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><%= link_to reservation.duty.duty_name, duty_path(reservation.duty.id) %> </h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= reservation.duty.venue %></h6>
+                <h6 class="card-subtitle mb-2 text-muted"><%= reservation.duty.start_date_time %></h6>
+                <h6 class="card-subtitle mb-2 text-muted"><%= reservation.duty.end_date_time %></h6>
+                <p class="card-text">type something</p>
+            </div>
         </div>
     <% end %>
 

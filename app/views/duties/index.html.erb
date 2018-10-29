@@ -11,7 +11,13 @@
                 <h6 class="card-subtitle mb-2 text-muted"><%= duty.start_date_time %></h6>
                 <h6 class="card-subtitle mb-2 text-muted"><%= duty.end_date_time %></h6>
                 <p class="card-text">type something</p>
-                <a href="/duties/<%= duty.id %>" class="card-link">Request Duty</a>
+                <div>
+                    <%= form_with scope: :reservations, url: duty_reservations_path(duty.id) do |form| %>
+                        <% form.hidden_field :user_id, value: current_user.id %>
+                        <%# form.hidden_field :duty_id, value: @duty.id %>
+                        <%= form.submit "Request Duty" %>
+                    <% end %>
+                </div>
             </div>
         </div>
     <% end %>
