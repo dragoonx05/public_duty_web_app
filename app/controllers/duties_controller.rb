@@ -31,6 +31,7 @@ class DutiesController < ApplicationController
 
     def show
         @duty = Duty.find(params[:id])
+        @reservation = Reservation.where(duty_id: @duty.id)
     end
 
     def edit

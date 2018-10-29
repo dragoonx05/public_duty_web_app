@@ -13,7 +13,13 @@
     <%= form_with model: @reservation, scope: :reservations, url: duty_reservations_path(@duty.id) do |form| %>
         <%= form.hidden_field(:user_id, value: current_user.id) %>
         <%#= form.hidden_field :duty_id, value: @duty.id %>
-        <%= form.submit "Request Duty" %>
+
+        <%# if reserved? %>
+            <%#= form.submit "Request Duty", disabled: true %>
+        <%# else %>
+            <%= form.submit "Request Duty" %>
+        <%# end %>
+
     <% end %>
 
     <div id="" class="">
