@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root "welcome#index"
 
   # user related routes
-  resources :users, only:[:create, :edit, :show, :update]
+  resources :users, only:[:create, :edit, :show, :update] do
+    resources :reservations, only:[:index, :show]
+  end
 
   get "/sign_up" => "users#new", as: "sign_up"
   post "/sign_up" => "users#create"
