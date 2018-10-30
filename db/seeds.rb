@@ -28,10 +28,10 @@ User.create(email: 'snape@hogwarts.com', password: '11111111', name: "Severus Sn
 #------------ Duties ------------#
 Duty.create(user_id: "1", duty_name: "CNY Lion Dance", venue: "Leisure Mall, Cheras", start_date_time: "2018-Feb-16 10:00 AM", end_date_time: "2018-02-16 6:30 PM",contact_person: "Chang Chee Kok", contact_number: "014-1111111")
 
-Duty.create(user_id: "3", duty_name: "Hari Raya Open House", venue: "Dr. Mahathir's Mansion, Putrajaya", start_date_time: "2018-Jun-23 09:45 AM", end_date_time: "2018-06-23 6:00 PM",contact_person: "Wang Siew Hong", contact_number: "015-1111111")
+Duty.create(user_id: "5", duty_name: "Hari Raya Open House", venue: "Dr. Mahathir's Mansion, Putrajaya", start_date_time: "2018-Jun-23 09:45 AM", end_date_time: "2018-06-23 6:00 PM",contact_person: "Wang Siew Hong", contact_number: "015-1111111")
 
-Duty.create(user_id: "7", duty_name: "Deepavali Dinner", venue: "Kuil Sri Mahapahit, Petaling Jaya", start_date_time: "2018-Nov-06 1:00 PM", end_date_time: "2018-Nov-06 10:00 PM",contact_person: "Dr. Siv Azhar", contact_number: "016-1111111")
+Duty.create(user_id: "5", duty_name: "Deepavali Dinner", venue: "Kuil Sri Mahapahit, Petaling Jaya", start_date_time: "2018-Nov-06 1:00 PM", end_date_time: "2018-Nov-06 10:00 PM",contact_person: "Dr. Siv Azhar", contact_number: "016-1111111")
 
-Duty.create(user_id: "8", duty_name: "Standard Chartered KL Marathon 2018", venue: "Dataran Merdeka", start_date_time: "2018-Apr-07 11:00 PM", end_date_time: "2018-Apr-08 1:00 PM",contact_person: "Woo Chong You", contact_number: "017-1111111")
+Duty.create(user_id: "6", duty_name: "Standard Chartered KL Marathon 2018", venue: "Dataran Merdeka", start_date_time: "2018-Apr-07 11:00 PM", end_date_time: "2018-Apr-08 1:00 PM",contact_person: "Woo Chong You", contact_number: "017-1111111")
 
-Duty.create(user_id: "3", duty_name: "Jacky Cheung Live in Kuala Lumpur 2018", venue: "Axiata Indoor Stadium, Bukit Jalil", start_date_time: "2018-Jan-26 5:00 PM", end_date_time: "2018-Jan-26 11:00 PM",contact_person: "Lum Sir", contact_number: "018-1111111")
+Duty.create(user_id: "5", duty_name: "Jacky Cheung Live in Kuala Lumpur 2018", venue: "Axiata Indoor Stadium, Bukit Jalil", start_date_time: "2018-Jan-26 5:00 PM", end_date_time: "2018-Jan-26 11:00 PM",contact_person: "Lum Sir", contact_number: "018-1111111")
