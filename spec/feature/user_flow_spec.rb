@@ -12,7 +12,7 @@ RSpec.feature "New", :type => :feature do
   end
   # edgy path
   scenario "User creates a new account with invalid email" do
-    visit "/signup"
+    visit "/sign_up"
     fill_in "user[name]", :with => "Jolynn"
     fill_in "user[email]", :with => "gmail.com"
     fill_in "user[password]", :with => "11111111"
