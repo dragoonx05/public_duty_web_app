@@ -17,7 +17,7 @@ User.create(email: 'ron@hogwarts.com', password: '11111111', name: "Ron Weasley"
 User.create(email: 'herm@hogwarts.com', password: '11111111', name: "Hermione Granger", ic_number: "920102111111", sjam_id: "WP-0003", division: "Kuala Lumpur Sri Bintang Utara Combined Cadet", phone_number: "013-1111111", driver_status: false, role: "CVSC")
 
 # 4. Neville Longbottom, non-driver, member
-User.create(email: 'neville@hogwarts.com', password: '11111111', name: "Neville Longbottom", ic_number: "920102111111", sjam_id: "WP-0004", division: "Kuala Lumpur Sri Bintang Utara Combined Cadet", phone_number: "013-1111111", driver_status: false, role: "Member")
+User.create(email: 'neville@hogwarts.com', password: '11111111', name: "Neville Longbottom", ic_number: "920102111131", sjam_id: "WP-0004", division: "Kuala Lumpur Sri Bintang Utara Combined Cadet", phone_number: "013-1111111", driver_status: false, role: "Member")
 
 # 5. Albus Dumbledore, non-driver, admin
 User.create(email: 'albus@hogwarts.com', password: '11111111', name: "Albus Dumbledore", ic_number: "890101111111", sjam_id: "WP-0005", division: "Wilayah Persekutuan Regional Headquarters", phone_number: "011-2111111", driver_status: false, role: "Administrator")
